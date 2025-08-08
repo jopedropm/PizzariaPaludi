@@ -6,7 +6,7 @@
     <title>Paludi Pizzas - A Melhor Pizza da Região</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link rel="shortcut icon" href="./public/1-logo-paludi-esfiharia1-1_upscayl_2x_digital-art-4x.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -73,26 +73,39 @@
             padding-bottom: 5rem; /* Espaçamento na parte inferior */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para o texto para melhor legibilidade */
         }
+
+        /* Estilos para o logo */
+        .logo-img {
+            transition: all 0.3s ease-in-out; /* Transição suave para todas as propriedades */
+        }
+        .header-scrolled .logo-img {
+            height: 4rem; /* Altura do logo quando a página é rolada (igual ao header) */
+            /* Se precisar ajustar o top, adicione também */
+             top: 0.5rem; /* Ajusta a posição vertical para alinhar com o header */
+        }
+        .header-scrolled .header-logo-container {
+            top: 0; /* Alinha o container do logo com o topo do header */
+            transform: translateX(-50%); /* Mantém o logo centralizado */
+        }
+        .header-scrolled {
+            background-color: rgba(26, 32, 44, 0.9); /* Fundo um pouco mais opaco ao rolar */
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
-    <header class="bg-gray-900/10 backdrop-blur-sm fixed top-0 z-50 w-full">
+    <header id="main-header" class="bg-gray-900/10 backdrop-blur-sm fixed top-0 z-50 w-full">
         <div class="container mx-auto px-4 relative">
-            <!-- MUDANÇA AQUI: A classe py-2 foi removida e h-16 foi adicionada. -->
-            <!-- Isso define uma altura fixa para a barra do cabeçalho (4rem ou 64px). -->
             <div class="flex justify-between items-center h-16">
-                <!-- O logo (h-24 ou 96px) é mais alto que o cabeçalho e está posicionado no topo (top-0). -->
-                <!-- Isso faz com que ele "vaze" para fora da barra, criando o efeito desejado. -->
-                <a href="#" class="absolute left-1/2 -translate-x-1/2 top-0">
-                    <img class="h-24" src="./public/1-logo-paludi-esfiharia1-1_upscayl_2x_digital-art-4x.png" alt="Logo Paludi Pizzas">
+                <!-- Adicionamos um ID para o container do logo e uma classe para o logo -->
+                <a href="#" id="header-logo-container" class="absolute left-1/2 -translate-x-1/2 top-0">
+                    <img id="main-logo" class="h-24 logo-img" src="./public/1-logo-paludi-esfiharia1-1_upscayl_2x_digital-art-4x.png" alt="Logo Paludi Pizzas">
                 </a>
                 <nav class="hidden md:flex items-center space-x-6">
                     <a href="#menu" class="hover:text-amber-400 transition-colors duration-300">Cardápio</a>
                     <a href="#sobre" class="hover:text-amber-400 transition-colors duration-300">Sobre Nós</a>
                     <a href="#contato" class="hover:text-amber-400 transition-colors duration-300">Contato</a>
                 </nav>
-                <!-- Alteração aqui: Dois novos botões para iFood e XMenu -->
                 <nav class="hidden md:flex items-center space-x-4">
                     <a href="#" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center gap-2">
                         <img src="https://placehold.co/24x24/FFFFFF/000000?text=i" alt="iFood logo" class="rounded-full">
@@ -112,7 +125,6 @@
             <a href="#menu" class="block py-2 px-4 text-sm hover:bg-gray-700">Cardápio</a>
             <a href="#sobre" class="block py-2 px-4 text-sm hover:bg-gray-700">Sobre Nós</a>
             <a href="#contato" class="block py-2 px-4 text-sm hover:bg-gray-700">Contato</a>
-            <!-- Alteração aqui: Novos botões para iFood e XMenu no menu mobile -->
             <a href="#" class="block py-2 px-4 text-sm bg-red-600 text-white font-bold text-center mt-2">Pedir pelo iFood</a>
             <a href="#" class="block py-2 px-4 text-sm bg-gray-800 text-white font-bold text-center mt-2">Cardápio Digital (XMENU)</a>
         </div>
@@ -137,53 +149,55 @@
         </section>
 
         <!-- Cardapio -->
-        <section id="menu" class="py-16 sm:py-24 bg-gray-800">
+        <section id="menu" class="py-16 sm:py-24 bg-green-900 text-white">
             <div class="container mx-auto px-4">
                 <h3 class="text-3xl sm:text-4xl font-bold text-center mb-2 text-amber-400">Nosso Cardápio</h3>
-                <p class="text-center text-gray-400 mb-12">Uma seleção especial para todos os gostos.</p>
+                <p class="text-center text-gray-200 mb-12">Uma seleção especial para todos os gostos.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-green-800 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
                         <img src="./public/images/pizza2.jpg" alt="Imagem de uma pizza de calabresa" class="rounded-md mb-4 w-full h-40 object-cover">
                         <h4 class="text-xl font-bold text-amber-400 mb-2">Pizzas</h4>
-                        <p class="text-gray-400">As clássicas e as especiais da casa. Massa fininha e crocante com muito recheio.</p>
+                        <p class="text-gray-200">As clássicas e as especiais da casa. Massa fininha e crocante com muito recheio.</p>
                     </div>
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-green-800 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
                         <img src="./public/images/495278427_1246573230580189_7381729417229197834_n.jpg" alt="Imagem de uma esfiha de carne" class="rounded-md mb-4 w-full h-40 object-cover">
                         <h4 class="text-xl font-bold text-amber-400 mb-2">Esfihas</h4>
-                        <p class="text-gray-400">Abertas ou fechadas, nossas esfihas são a pedida certa para o seu lanche.</p>
+                        <p class="text-gray-200">Abertas ou fechadas, nossas esfihas são a pedida certa para o seu lanche.</p>
                     </div>
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-green-800 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
                         <img src="./public/images/beirute.jpg" alt="Imagem de um beirute" class="rounded-md mb-4 w-full h-40 object-cover">
                         <h4 class="text-xl font-bold text-amber-400 mb-2">Beirutes</h4>
-                        <p class="text-gray-400">Generosos e saborosos, perfeitos para matar aquela fome de verdade.</p>
+                        <p class="text-gray-200">Generosos e saborosos, perfeitos para matar aquela fome de verdade.</p>
                     </div>
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-green-800 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
                         <img src="./public/images/guarana.jpg" alt="Imagem de bebidas" class="rounded-md mb-4 w-full h-40 object-cover">
                         <h4 class="text-xl font-bold text-amber-400 mb-2">Bebidas & Sobremesas</h4>
-                        <p class="text-gray-400">Para acompanhar e finalizar sua refeição com chave de ouro.</p>
+                        <p class="text-gray-200">Para acompanhar e finalizar sua refeição com chave de ouro.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="sobre" class="py-16 sm:py-24">
+        <!-- Sobre Nós -->
+        <section id="sobre" class="py-16 sm:py-24 bg-red-800 text-white">
             <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2">
                     <img src="./public/images/paludi.jpg" alt="Imagem da equipe da pizzaria" class="rounded-lg shadow-xl w-full">
                 </div>
                 <div class="md:w-1/2 text-center md:text-left">
                     <h3 class="text-3xl sm:text-4xl font-bold text-amber-400 mb-4">Nossa História</h3>
-                    <p class="text-gray-300 mb-4 leading-relaxed">Desde 2005, a Paludi Pizzas é mais do que uma pizzaria, é um ponto de encontro de amigos e famílias. Nascemos do sonho de levar sabor e alegria para a sua mesa, com um compromisso inabalável com a qualidade dos ingredientes e o carinho no preparo de cada pizza.</p>
-                    <p class="text-gray-300 leading-relaxed">Agradecemos a todos os nossos clientes por fazerem parte desta jornada de quase duas décadas de sucesso!</p>
+                    <p class="text-gray-100 mb-4 leading-relaxed">Desde 2005, a Paludi Pizzas é mais do que uma pizzaria, é um ponto de encontro de amigos e famílias. Nascemos do sonho de levar sabor e alegria para a sua mesa, com um compromisso inabalável com a qualidade dos ingredientes e o carinho no preparo de cada pizza.</p>
+                    <p class="text-gray-100 leading-relaxed">Agradecemos a todos os nossos clientes por fazerem parte desta jornada de quase duas décadas de sucesso!</p>
                 </div>
             </div>
         </section>
         
-        <section id="pedido" class="py-16 sm:py-24 bg-amber-500 text-gray-900">
+        <!-- Pedido -->
+        <section id="pedido" class="py-16 sm:py-24 bg-green-900 text-white">
             <div class="container mx-auto px-4 text-center">
-                <h3 class="text-3xl sm:text-4xl font-bold mb-4">Ficou com fome?</h3>
-                <p class="text-lg max-w-2xl mx-auto mb-8">Peça agora mesmo e receba sua pizza quentinha em casa!</p>
+                <h3 class="text-3xl sm:text-4xl font-bold mb-4 text-amber-400">Ficou com fome?</h3>
+                <p class="text-lg max-w-2xl mx-auto mb-8 text-gray-200">Peça agora mesmo e receba sua pizza quentinha em casa!</p>
                 <div class="flex flex-wrap justify-center items-center gap-4">
                     <a href="#" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center gap-2">
                         <img src="https://placehold.co/24x24/FFFFFF/000000?text=i" alt="iFood logo" class="rounded-full">
@@ -197,12 +211,13 @@
             </div>
         </section>
 
-        <section id="contato" class="py-16 sm:py-24 bg-gray-800">
+        <!-- Contato -->
+        <section id="contato" class="py-16 sm:py-24 bg-red-800 text-white">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div class="text-center md:text-left">
                         <h4 class="text-2xl font-bold text-amber-400 mb-4">Ligue para nós!</h4>
-                        <p class="text-gray-400 mb-6">Estamos prontos para anotar o seu pedido.</p>
+                        <p class="text-gray-100 mb-6">Estamos prontos para anotar o seu pedido.</p>
                         <div class="space-y-3">
                             <p class="text-2xl font-semibold tracking-wider">3252-7171</p>
                             <p class="text-2xl font-semibold tracking-wider">3252-7272</p>
@@ -212,11 +227,11 @@
                     </div>
                     <div class="text-center md:text-left">
                         <h4 class="text-2xl font-bold text-amber-400 mb-4">Horário de Funcionamento</h4>
-                        <div class="space-y-2 text-gray-300">
+                        <div class="space-y-2 text-gray-100">
                             <p><strong class="font-semibold text-white">Terça a Quinta:</strong> 18:00h - 00:00h</p>
                             <p><strong class="font-semibold text-white">Sextas e Sábados:</strong> 18:00h - 01:00h</p>
                             <p><strong class="font-semibold text-white">Domingos:</strong> 18:00h - 00:00h</p>
-                            <p class="mt-4 text-gray-400">Segundas-feiras: Fechado para recarregar as energias!</p>
+                            <p class="mt-4 text-gray-100">Segundas-feiras: Fechado para recarregar as energias!</p>
                         </div>
                     </div>
                 </div>
@@ -224,8 +239,8 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 py-8">
-        <div class="container mx-auto px-4 text-center text-gray-400">
+    <footer class="bg-green-900 py-8">
+        <div class="container mx-auto px-4 text-center text-white">
             <p>&copy; 2024 Paludi Pizzas. Todos os direitos reservados.</p>
             <p class="text-sm mt-2">Feito com ❤️ e muito queijo.</p>
         </div>
@@ -275,6 +290,20 @@
             // Chama a função novamente após 3.5 segundos (3500 milissegundos)
             setTimeout(showSlides, 3500); 
         }
+
+        // Lógica para o logo que muda de tamanho ao rolar
+        const mainHeader = document.getElementById('main-header');
+        const mainLogo = document.getElementById('main-logo');
+        const headerLogoContainer = document.getElementById('header-logo-container');
+
+        window.addEventListener('scroll', () => {
+            // Se a posição de rolagem vertical for maior que 50px (ou outro valor que você preferir)
+            if (window.scrollY > 50) {
+                mainHeader.classList.add('header-scrolled');
+            } else {
+                mainHeader.classList.remove('header-scrolled');
+            }
+        });
     </script>
 
 </body>
