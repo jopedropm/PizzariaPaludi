@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paludi Pizzas - A Melhor Pizza da Região</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Heroicons -->
+    <script src="https://unpkg.com/heroicons@2.1.1/24/outline/index.js"></script>
+
+    <style>
+        /* Estilo customizado para usar a fonte Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Efeito de background gradiente sutil para o hero */
+        .hero-bg {
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; 
+            position: relative; /* Necessário para posicionar o conteúdo do slider */
+            overflow: hidden; /* Para esconder partes da imagem que não se encaixam */
+        }
+
+        /* Estilos do slider */
+        .mySlides {
+            /* Removido display: none; */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            visibility: hidden; /* Esconde a imagem, mas permite transição de opacidade */
+            pointer-events: none; /* Impede interação com slides invisíveis */
+            transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Transição de fade suave */
+        }
+
+        .mySlides.active {
+            opacity: 1; /* Mostra a imagem ativa */
+            visibility: visible; /* Torna a imagem ativa visível */
+            pointer-events: auto; /* Permite interação com o slide ativo */
+        }
+
+        /* Sobreposição de gradiente para texto legível */
+        .overlay-gradient {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Acima das imagens do slider, abaixo do conteúdo */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Acima do gradiente e das imagens */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ocupa a altura total do hero */
+            padding-top: 5rem; /* Compensar o cabeçalho fixo */
+            padding-bottom: 5rem; /* Espaçamento na parte inferior */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para o texto para melhor legibilidade */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Cabeçalho -->
+    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 z-50 w-full">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <h1 class="text-3xl font-bold text-amber-400 tracking-tight">Paludi Pizzas</h1>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#menu" class="hover:text-amber-400 transition-colors duration-300">Cardápio</a>
+                    <a href="#sobre" class="hover:text-amber-400 transition-colors duration-300">Sobre Nós</a>
+                    <a href="#contato" class="hover:text-amber-400 transition-colors duration-300">Contato</a>
+                    <a href="#pedido" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105">
+                        Peça Agora
+                    </a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <a href="#menu" class="block py-2 px-4 text-sm hover:bg-gray-700">Cardápio</a>
+            <a href="#sobre" class="block py-2 px-4 text-sm hover:bg-gray-700">Sobre Nós</a>
+            <a href="#contato" class="block py-2 px-4 text-sm hover:bg-gray-700">Contato</a>
+            <a href="#pedido" class="block py-2 px-4 text-sm bg-amber-500 text-gray-900 font-bold text-center">Peça Agora</a>
+        </div>
+    </header>
+
+    <main> 
+        <!-- Seção Hero com Slider -->
+        <section class="hero-bg">
+            <!-- Imagens do Slider -->
+            <img class="mySlides active" src="./public/images/pizza.jpg" alt="Pizza Margherita fresca e saborosa">
+            <img class="mySlides" src="./public/images/493610572_1241312537772925_4742727395226879591_n.jpg" alt="Pizza de calabresa com borda crocante">
+            <img class="mySlides" src="./public/images/494943310_1246239630613549_872437774596197441_n.jpg" alt="Chef preparando pizza no forno a lenha">
+            <img class="mySlides" src="./public/images/495278427_1246573230580189_7381729417229197834_n.jpg" alt="Forno a lenha aquecendo pizzas">
+
+            <!-- Sobreposição de gradiente para legibilidade do texto -->
+            <div class="overlay-gradient"></div>
+
+            <!-- Conteúdo do Hero (texto e botão) -->
+            <div class="hero-content container mx-auto text-center px-4">
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-wider mb-4">Sabor que une a galera</h2>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-300">Pizzas artesanais com ingredientes frescos, direto do forno para a sua casa. Desde 2005 fazendo história.</p>
+                <a href="#menu" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105 inline-block">
+                    Ver Cardápio
+                </a>
+            </div>
+        </section>
+
+        <!-- Seção Cardápio -->
+        <section id="menu" class="py-16 sm:py-24 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h3 class="text-3xl sm:text-4xl font-bold text-center mb-2 text-amber-400">Nosso Cardápio</h3>
+                <p class="text-center text-gray-400 mb-12">Uma seleção especial para todos os gostos.</p>
+                
+                <!-- Categorias do Cardápio -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Pizzas -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/333/FFF?text=Pizza+Calabresa" alt="Imagem de uma pizza de calabresa" class="rounded-md mb-4 w-full h-40 object-cover">
+                        <h4 class="text-xl font-bold text-amber-400 mb-2">Pizzas</h4>
+                        <p class="text-gray-400">As clássicas e as especiais da casa. Massa fininha e crocante com muito recheio.</p>
+                    </div>
+                    <!-- Esfihas -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/333/FFF?text=Esfiha+de+Carne" alt="Imagem de uma esfiha de carne" class="rounded-md mb-4 w-full h-40 object-cover">
+                        <h4 class="text-xl font-bold text-amber-400 mb-2">Esfihas</h4>
+                        <p class="text-gray-400">Abertas ou fechadas, nossas esfihas são a pedida certa para o seu lanche.</p>
+                    </div>
+                    <!-- Beirutes -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/333/FFF?text=Beirute" alt="Imagem de um beirute" class="rounded-md mb-4 w-full h-40 object-cover">
+                        <h4 class="text-xl font-bold text-amber-400 mb-2">Beirutes</h4>
+                        <p class="text-gray-400">Generosos e saborosos, perfeitos para matar aquela fome de verdade.</p>
+                    </div>
+                    <!-- Bebidas e Sobremesas -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/333/FFF?text=Refrigerante" alt="Imagem de bebidas" class="rounded-md mb-4 w-full h-40 object-cover">
+                        <h4 class="text-xl font-bold text-amber-400 mb-2">Bebidas & Sobremesas</h4>
+                        <p class="text-gray-400">Para acompanhar e finalizar sua refeição com chave de ouro.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="sobre" class="py-16 sm:py-24">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/222/FFF?text=Equipe+Paludi+Pizzas" alt="Imagem da equipe da pizzaria" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-amber-400 mb-4">Nossa História</h3>
+                    <p class="text-gray-300 mb-4 leading-relaxed">Desde 2005, a Paludi Pizzas é mais do que uma pizzaria, é um ponto de encontro de amigos e famílias. Nascemos do sonho de levar sabor e alegria para a sua mesa, com um compromisso inabalável com a qualidade dos ingredientes e o carinho no preparo de cada pizza.</p>
+                    <p class="text-gray-300 leading-relaxed">Agradecemos a todos os nossos clientes por fazerem parte desta jornada de quase duas décadas de sucesso!</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Pedido -->
+        <section id="pedido" class="py-16 sm:py-24 bg-amber-500 text-gray-900">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="text-3xl sm:text-4xl font-bold mb-4">Ficou com fome?</h3>
+                <p class="text-lg max-w-2xl mx-auto mb-8">Peça agora mesmo e receba sua pizza quentinha em casa!</p>
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <a href="#" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center gap-2">
+                        <img src="https://placehold.co/24x24/FFFFFF/000000?text=i" alt="iFood logo" class="rounded-full">
+                        <span>Pedir pelo iFood</span>
+                    </a>
+                    <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6-2.292m0 0v14.25" /></svg>
+                        <span>Cardápio Digital (XMENU)</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato e Horários -->
+        <section id="contato" class="py-16 sm:py-24 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Contato / Telefones -->
+                    <div class="text-center md:text-left">
+                        <h4 class="text-2xl font-bold text-amber-400 mb-4">Ligue para nós!</h4>
+                        <p class="text-gray-400 mb-6">Estamos prontos para anotar o seu pedido.</p>
+                        <div class="space-y-3">
+                            <p class="text-2xl font-semibold tracking-wider">3252-7171</p>
+                            <p class="text-2xl font-semibold tracking-wider">3252-7272</p>
+                            <p class="text-2xl font-semibold tracking-wider">3225-4438</p>
+                            <p class="text-2xl font-semibold tracking-wider">3237-2188</p>
+                        </div>
+                    </div>
+                    <!-- Horário de Funcionamento -->
+                    <div class="text-center md:text-left">
+                        <h4 class="text-2xl font-bold text-amber-400 mb-4">Horário de Funcionamento</h4>
+                        <div class="space-y-2 text-gray-300">
+                            <p><strong class="font-semibold text-white">Terça a Quinta:</strong> 18:00h - 00:00h</p>
+                            <p><strong class="font-semibold text-white">Sextas e Sábados:</strong> 18:00h - 01:00h</p>
+                            <p><strong class="font-semibold text-white">Domingos:</strong> 18:00h - 00:00h</p>
+                            <p class="mt-4 text-gray-400">Segundas-feiras: Fechado para recarregar as energias!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 py-8">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>&copy; 2024 Paludi Pizzas. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2">Feito com ❤️ e muito queijo.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para o menu mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fecha o menu mobile ao clicar em um link
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let i = 0; i < mobileMenuLinks.length; i++) {
+            mobileMenuLinks[i].addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+
+        // Lógica do Slider de Imagens
+        let slideIndex = 0; // Inicia o índice do slide em 0
+        showSlides(); // Chama a função para iniciar o slider
+
+        function showSlides() {
+            let i;
+            // Pega todos os elementos com a classe 'mySlides'
+            const slides = document.getElementsByClassName("mySlides");
+            
+            // Remove a classe 'active' de todos os slides
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active'); 
+            }
+            
+            // Incrementa o índice do slide
+            slideIndex++;
+            // Se o índice ultrapassar o número de slides, volta para o primeiro
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            
+            // Adiciona a classe 'active' para a imagem atual, que acionará a transição no CSS
+            slides[slideIndex-1].classList.add('active'); 
+            
+            // Chama a função novamente após 3.5 segundos (2000 milissegundos)
+            setTimeout(showSlides, 3500); 
+        }
+    </script>
+
+</body>
+</html>
