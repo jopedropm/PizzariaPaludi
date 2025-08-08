@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paludi Pizzas - A Melhor Pizza da Região</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     
-    <!-- Heroicons -->
     <script src="https://unpkg.com/heroicons@2.1.1/24/outline/index.js"></script>
 
     <style>
@@ -72,7 +69,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh; /* Ocupa a altura total do hero */
-            padding-top: 5rem; /* Compensar o cabeçalho fixo */
+            padding-top: 8rem; /* Compensar o cabeçalho e o logo maiores */
             padding-bottom: 5rem; /* Espaçamento na parte inferior */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para o texto para melhor legibilidade */
         }
@@ -80,17 +77,30 @@
 </head>
 <body class="bg-gray-900 text-white">
 
-    <!-- Cabeçalho -->
-    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 z-50 w-full">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <h1 class="text-3xl font-bold text-amber-400 tracking-tight">Paludi Pizzas</h1>
+    <header class="bg-gray-900/10 backdrop-blur-sm fixed top-0 z-50 w-full">
+        <div class="container mx-auto px-4 relative">
+            <!-- MUDANÇA AQUI: A classe py-2 foi removida e h-16 foi adicionada. -->
+            <!-- Isso define uma altura fixa para a barra do cabeçalho (4rem ou 64px). -->
+            <div class="flex justify-between items-center h-16">
+                <!-- O logo (h-24 ou 96px) é mais alto que o cabeçalho e está posicionado no topo (top-0). -->
+                <!-- Isso faz com que ele "vaze" para fora da barra, criando o efeito desejado. -->
+                <a href="#" class="absolute left-1/2 -translate-x-1/2 top-0">
+                    <img class="h-24" src="./public/1-logo-paludi-esfiharia1-1_upscayl_2x_digital-art-4x.png" alt="Logo Paludi Pizzas">
+                </a>
                 <nav class="hidden md:flex items-center space-x-6">
                     <a href="#menu" class="hover:text-amber-400 transition-colors duration-300">Cardápio</a>
                     <a href="#sobre" class="hover:text-amber-400 transition-colors duration-300">Sobre Nós</a>
                     <a href="#contato" class="hover:text-amber-400 transition-colors duration-300">Contato</a>
-                    <a href="#pedido" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105">
-                        Peça Agora
+                </nav>
+                <!-- Alteração aqui: Dois novos botões para iFood e XMenu -->
+                <nav class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center gap-2">
+                        <img src="https://placehold.co/24x24/FFFFFF/000000?text=i" alt="iFood logo" class="rounded-full">
+                        <span>iFood</span>
+                    </a>
+                    <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6-2.292m0 0v14.25" /></svg>
+                        <span>XMENU</span>
                     </a>
                 </nav>
                 <button id="mobile-menu-button" class="md:hidden text-white">
@@ -98,28 +108,25 @@
                 </button>
             </div>
         </div>
-        <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
             <a href="#menu" class="block py-2 px-4 text-sm hover:bg-gray-700">Cardápio</a>
             <a href="#sobre" class="block py-2 px-4 text-sm hover:bg-gray-700">Sobre Nós</a>
             <a href="#contato" class="block py-2 px-4 text-sm hover:bg-gray-700">Contato</a>
-            <a href="#pedido" class="block py-2 px-4 text-sm bg-amber-500 text-gray-900 font-bold text-center">Peça Agora</a>
+            <!-- Alteração aqui: Novos botões para iFood e XMenu no menu mobile -->
+            <a href="#" class="block py-2 px-4 text-sm bg-red-600 text-white font-bold text-center mt-2">Pedir pelo iFood</a>
+            <a href="#" class="block py-2 px-4 text-sm bg-gray-800 text-white font-bold text-center mt-2">Cardápio Digital (XMENU)</a>
         </div>
     </header>
 
     <main> 
-        <!-- Seção Hero com Slider -->
         <section class="hero-bg">
-            <!-- Imagens do Slider -->
             <img class="mySlides active" src="./public/images/pizza.jpg" alt="Pizza Margherita fresca e saborosa">
             <img class="mySlides" src="./public/images/493610572_1241312537772925_4742727395226879591_n.jpg" alt="Pizza de calabresa com borda crocante">
             <img class="mySlides" src="./public/images/494943310_1246239630613549_872437774596197441_n.jpg" alt="Chef preparando pizza no forno a lenha">
             <img class="mySlides" src="./public/images/495278427_1246573230580189_7381729417229197834_n.jpg" alt="Forno a lenha aquecendo pizzas">
 
-            <!-- Sobreposição de gradiente para legibilidade do texto -->
             <div class="overlay-gradient"></div>
 
-            <!-- Conteúdo do Hero (texto e botão) -->
             <div class="hero-content container mx-auto text-center px-4">
                 <h2 class="text-4xl md:text-6xl font-black uppercase tracking-wider mb-4">Sabor que une a galera</h2>
                 <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-300">Pizzas artesanais com ingredientes frescos, direto do forno para a sua casa. Desde 2005 fazendo história.</p>
@@ -129,35 +136,30 @@
             </div>
         </section>
 
-        <!-- Seção Cardápio -->
+        <!-- Cardapio -->
         <section id="menu" class="py-16 sm:py-24 bg-gray-800">
             <div class="container mx-auto px-4">
                 <h3 class="text-3xl sm:text-4xl font-bold text-center mb-2 text-amber-400">Nosso Cardápio</h3>
                 <p class="text-center text-gray-400 mb-12">Uma seleção especial para todos os gostos.</p>
                 
-                <!-- Categorias do Cardápio -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Pizzas -->
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://placehold.co/400x300/333/FFF?text=Pizza+Calabresa" alt="Imagem de uma pizza de calabresa" class="rounded-md mb-4 w-full h-40 object-cover">
+                        <img src="./public/images/pizza2.jpg" alt="Imagem de uma pizza de calabresa" class="rounded-md mb-4 w-full h-40 object-cover">
                         <h4 class="text-xl font-bold text-amber-400 mb-2">Pizzas</h4>
                         <p class="text-gray-400">As clássicas e as especiais da casa. Massa fininha e crocante com muito recheio.</p>
                     </div>
-                    <!-- Esfihas -->
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://placehold.co/400x300/333/FFF?text=Esfiha+de+Carne" alt="Imagem de uma esfiha de carne" class="rounded-md mb-4 w-full h-40 object-cover">
+                        <img src="./public/images/495278427_1246573230580189_7381729417229197834_n.jpg" alt="Imagem de uma esfiha de carne" class="rounded-md mb-4 w-full h-40 object-cover">
                         <h4 class="text-xl font-bold text-amber-400 mb-2">Esfihas</h4>
                         <p class="text-gray-400">Abertas ou fechadas, nossas esfihas são a pedida certa para o seu lanche.</p>
                     </div>
-                    <!-- Beirutes -->
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://placehold.co/400x300/333/FFF?text=Beirute" alt="Imagem de um beirute" class="rounded-md mb-4 w-full h-40 object-cover">
+                        <img src="./public/images/beirute.jpg" alt="Imagem de um beirute" class="rounded-md mb-4 w-full h-40 object-cover">
                         <h4 class="text-xl font-bold text-amber-400 mb-2">Beirutes</h4>
                         <p class="text-gray-400">Generosos e saborosos, perfeitos para matar aquela fome de verdade.</p>
                     </div>
-                    <!-- Bebidas e Sobremesas -->
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://placehold.co/400x300/333/FFF?text=Refrigerante" alt="Imagem de bebidas" class="rounded-md mb-4 w-full h-40 object-cover">
+                        <img src="./public/images/guarana.jpg" alt="Imagem de bebidas" class="rounded-md mb-4 w-full h-40 object-cover">
                         <h4 class="text-xl font-bold text-amber-400 mb-2">Bebidas & Sobremesas</h4>
                         <p class="text-gray-400">Para acompanhar e finalizar sua refeição com chave de ouro.</p>
                     </div>
@@ -165,11 +167,10 @@
             </div>
         </section>
 
-        <!-- Seção Sobre Nós -->
         <section id="sobre" class="py-16 sm:py-24">
             <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2">
-                    <img src="https://placehold.co/600x400/222/FFF?text=Equipe+Paludi+Pizzas" alt="Imagem da equipe da pizzaria" class="rounded-lg shadow-xl w-full">
+                    <img src="./public/images/paludi.jpg" alt="Imagem da equipe da pizzaria" class="rounded-lg shadow-xl w-full">
                 </div>
                 <div class="md:w-1/2 text-center md:text-left">
                     <h3 class="text-3xl sm:text-4xl font-bold text-amber-400 mb-4">Nossa História</h3>
@@ -179,7 +180,6 @@
             </div>
         </section>
         
-        <!-- Seção de Pedido -->
         <section id="pedido" class="py-16 sm:py-24 bg-amber-500 text-gray-900">
             <div class="container mx-auto px-4 text-center">
                 <h3 class="text-3xl sm:text-4xl font-bold mb-4">Ficou com fome?</h3>
@@ -197,11 +197,9 @@
             </div>
         </section>
 
-        <!-- Seção de Contato e Horários -->
         <section id="contato" class="py-16 sm:py-24 bg-gray-800">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Contato / Telefones -->
                     <div class="text-center md:text-left">
                         <h4 class="text-2xl font-bold text-amber-400 mb-4">Ligue para nós!</h4>
                         <p class="text-gray-400 mb-6">Estamos prontos para anotar o seu pedido.</p>
@@ -212,7 +210,6 @@
                             <p class="text-2xl font-semibold tracking-wider">3237-2188</p>
                         </div>
                     </div>
-                    <!-- Horário de Funcionamento -->
                     <div class="text-center md:text-left">
                         <h4 class="text-2xl font-bold text-amber-400 mb-4">Horário de Funcionamento</h4>
                         <div class="space-y-2 text-gray-300">
@@ -227,7 +224,6 @@
         </section>
     </main>
 
-    <!-- Rodapé -->
     <footer class="bg-gray-900 py-8">
         <div class="container mx-auto px-4 text-center text-gray-400">
             <p>&copy; 2024 Paludi Pizzas. Todos os direitos reservados.</p>
@@ -276,7 +272,7 @@
             // Adiciona a classe 'active' para a imagem atual, que acionará a transição no CSS
             slides[slideIndex-1].classList.add('active'); 
             
-            // Chama a função novamente após 3.5 segundos (2000 milissegundos)
+            // Chama a função novamente após 3.5 segundos (3500 milissegundos)
             setTimeout(showSlides, 3500); 
         }
     </script>
